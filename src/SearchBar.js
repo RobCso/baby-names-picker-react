@@ -1,17 +1,17 @@
-import React from "react";
-import "./App.css";
-import Data from "./babyNamesData.json";
-import Names from "./Names";
 
-const SearchBar = () => {
+import "./App.css";
+
+const SearchBar = ({ setSearch }) => {
   function findName(event) {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     
-      console.log(Data);
-    
-    return Data.filter((name) =>
-      name.name.includes(event.target.value.toLowerCase())
-    );
+    // let filteredNames = names.filter((name) =>
+    //   name.name.toLowerCase().includes(event.target.value.toLowerCase())
+    // );
+    // console.log(filteredNames);
+   
+    // return setNames(filteredNames);
+    setSearch(event.target.value)
   }
   return (
     <div className="SearchBar">
@@ -19,8 +19,8 @@ const SearchBar = () => {
         type={"text"}
         placeholder="Type in the name"
         onChange={findName}
-      ></input>
-    </div>
+      ></input>      
+    </div>    
   );
 };
 

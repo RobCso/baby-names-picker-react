@@ -1,15 +1,17 @@
-import React from "react";
-import Data from "./babyNamesData.json";
+
+
 import "./App.css";
 
-const Names = () => {
-  Data.sort((a, b) => a.name.localeCompare(b.name));
+const AllBabyNames = ({ names,search }) => {
+  names.sort((a, b) => a.name.localeCompare(b.name));
   return (
-    <div className="Names">
-      {Data.map((name) => {
+    <div className="Names" >
+      {names.filter((item)=>{
+        return search.toLowerCase() ==="" ? item : item.name.toLowerCase().includes(search)
+      }).map((name) => {
         if (name.sex === "m")
           return (
-            <span className="NameSpan Male" key={name.id}>
+            <span className="NameSpan Male" key={name.id} >
               {name.name}
             </span>
           );
@@ -25,4 +27,4 @@ const Names = () => {
   );
 };
 
-export default Names;
+export default AllBabyNames;
